@@ -61,6 +61,6 @@ const galleryImages = [
 ]
 
 
-for (i in galleryImages){
-    console.log(galleryImages[i])
-}
+galleryImages.forEach(img => {
+    console.log(img)
+});
