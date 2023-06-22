@@ -61,6 +61,10 @@ const galleryImages = [
 ]
 
 
+let mainImage = document.querySelector("#gallery > img");
+mainImage.src = galleryImages[0].src
+mainImage.alt = galleryImages[0].alt
+
 galleryImages.forEach(img => {
     console.log(img)
 });
