@@ -20,11 +20,17 @@ const greetingText = "Good morning!"
 const weatherCondition = "sunny"
 const userLocation = "New York"
 let temperature = 22.8673
-let weatherText = `The weather is ${weatherCondition} in ${userLocation} and it's ${celsiusToFahr(temperature.toFixed(1))}°F outside.`
+let celsiusText = `The weather is ${weatherCondition} in ${userLocation} and it's ${temperature.toFixed(1)}°C outside.`
+let fahrText = `The weather is ${weatherCondition} in ${userLocation} and it's ${celsiusToFahr(temperature.toFixed(1))}°F outside.`
 
 document.querySelector("#greeting").innerHTML = greetingText;
-document.querySelector("p#weather").innerHTML = weatherText;
+document.querySelector("p#weather").innerHTML = celsiusText;
 
 document.querySelector(".weather-group").addEventListener("click", function(event){
-    console.log(event.target.id)
+    if(event.target.id == "celsius"){
+        document.querySelector("p#weather").innerHTML = celsiusText;
+    } else if (event.target.id == "fahr" ){
+        document.querySelector("p#weather").innerHTML = fahrText;
+
+    }
 })
