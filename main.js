@@ -42,3 +42,25 @@ setInterval(function(){
     document.querySelector("span[data-time=minutes]").textContent = localTime.getMinutes().toString().padStart(2, "0");
     document.querySelector("span[data-time=seconds]").textContent = localTime.getSeconds().toString().padStart(2, "0");
 }, 1000)
+
+// Gallert Section
+
+const galleryImages = [
+    {
+        "src": "./assets/gallery/image1.jpg",
+        "alt": "Thumbnail Image 1"
+    },
+    {
+        "src": "./assets/gallery/image2.jpg",
+        "alt": "Thumbnail Image 2"
+    },
+    {
+        "src": "./assets/gallery/image3.jpg",
+        "alt": "Thumbnail Image 3"
+    }
+]
+
+
+for (i in galleryImages){
+    console.log(galleryImages[i])
+}
