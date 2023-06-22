@@ -10,3 +10,7 @@ document.querySelector("#close-nav-menu").addEventListener("click", function(){
 // Greeting section
 
 const greetingText = "Good morning!"
+const weatherCondition = "sunny"
+const userLocation = "New York"
+let temperature = 22.8673
+let weatherText = "The weather is cloudy in London and it's 22°C outside."
