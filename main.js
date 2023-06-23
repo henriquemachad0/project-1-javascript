@@ -150,6 +150,12 @@ function galleryHandler(){
 // Products section
 function productsHandler(){
     let productsSection = document.querySelector(".products-area");
+    let freeProducts = products.filter(function(item){
+        return !item.price || item.price <= 0;
+    });
+    let paidProducts = products.filter(function(item){
+        return item.price > 0;
+    });
 
     // Run a loop throught the products and crate an HTML element ("product-item") for each of them
     products.forEach((product, index) => {
@@ -195,10 +201,12 @@ function productsHandler(){
 
         // Add complete individual product too the product section
         productsSection.append(productElm);
-    })
+    });
 
-    let totalProducts = products.length;
-    document.querySelector(".products-filter label[for=all] span.product-amount").textContent = totalProducts; 
+
+    document.querySelector(".products-filter label[for=all] span.product-amount").textContent = products.length;
+    document.querySelector(".products-filter label[for=paid] span.product-amount").textContent = paidProducts.length; 
+    document.querySelector(".products-filter label[for=free] span.product-amount").textContent = freeProducts.length; 
 };
 
 
