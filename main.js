@@ -73,5 +73,19 @@ galleryImages.forEach((image, index) => {
     thumb.alt = image.alt;
     thumb.dataset.arrayIndex = index;
     thumb.dataset.selected = index === 0 ? true : false;
+
+    thumb.addEventListener("click", function(event){
+        let selectedIndex = event.target.dataset.arrayIndex;
+        let selectedImage = galleryImages[selectedIndex]
+        mainImage.src = selectedImage.src
+        mainImage.alt = selectedImage.alt
+
+        thumbnails.querySelectorAll("img").forEach( function(img){
+            img.dataset.selected = false
+        })
+
+        event.target.dataset.selected = true;
+    })
+
     thumbnails.appendChild(thumb)
 });
