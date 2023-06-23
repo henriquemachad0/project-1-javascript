@@ -148,8 +148,59 @@ function galleryHandler(){
 };
 
 // Products section
-function productsHandler(){
+
+function populateProducts(productList){
     let productsSection = document.querySelector(".products-area");
+    productsSection.textContent = "";
+
+    // Run a loop throught the products and crate an HTML element ("product-item") for each of them
+    productList.forEach((product, index) => {
+    // Create the HTML element for the individual product
+    let productElm = document.createElement("div");
+    productElm.classList.add("product-item");
+    
+    // Create the product image
+    let productImage = document.createElement("img");
+    productImage.src = product.image;
+    productImage.alt = `Image for ${product.title}`;
+
+    // Create the product details section
+    let productDetails = document.createElement("div");
+    productDetails.classList.add("product-details");
+
+    // Create product title, author, price-title and price
+    let productTitle = document.createElement("h3");
+    productTitle.classList.add("product-title");
+    productTitle.textContent = product.title;
+
+    let productAuthor = document.createElement("p");
+    productAuthor.classList.add("product-author");
+    productAuthor.textContent = product.author;
+
+    let priceTitle = document.createElement("p");
+    priceTitle.classList.add("price-title");
+    priceTitle.textContent = "Price";
+
+    let productPrice = document.createElement("p");
+    productPrice.classList.add("product-price");
+    productPrice.textContent = product.price > 0 ? `$${product.price.toFixed(2)}` : "Free";
+
+    // Append the product details
+    productDetails.append(productTitle);
+    productDetails.append(productAuthor);
+    productDetails.append(priceTitle);
+    productDetails.append(productPrice);
+    
+    // Add all child HTML elements of the product
+    productElm.append(productImage);
+    productElm.append(productDetails);
+
+    // Add complete individual product too the product section
+    productsSection.append(productElm);
+});
+}
+
+function productsHandler(){
     let freeProducts = products.filter(function(item){
         return !item.price || item.price <= 0;
     });
@@ -157,56 +208,23 @@ function productsHandler(){
         return item.price > 0;
     });
 
-    // Run a loop throught the products and crate an HTML element ("product-item") for each of them
-    products.forEach((product, index) => {
-        // Create the HTML element for the individual product
-        let productElm = document.createElement("div");
-        productElm.classList.add("product-item");
-        
-        // Create the product image
-        let productImage = document.createElement("img");
-        productImage.src = product.image;
-        productImage.alt = `Image for ${product.title}`;
-
-        // Create the product details section
-        let productDetails = document.createElement("div");
-        productDetails.classList.add("product-details");
-
-        // Create product title, author, price-title and price
-        let productTitle = document.createElement("h3");
-        productTitle.classList.add("product-title");
-        productTitle.textContent = product.title;
-
-        let productAuthor = document.createElement("p");
-        productAuthor.classList.add("product-author");
-        productAuthor.textContent = product.author;
-
-        let priceTitle = document.createElement("p");
-        priceTitle.classList.add("price-title");
-        priceTitle.textContent = "Price";
-
-        let productPrice = document.createElement("p");
-        productPrice.classList.add("product-price");
-        productPrice.textContent = product.price > 0 ? `$${product.price.toFixed(2)}` : "Free";
-
-        // Append the product details
-        productDetails.append(productTitle);
-        productDetails.append(productAuthor);
-        productDetails.append(priceTitle);
-        productDetails.append(productPrice);
-        
-        // Add all child HTML elements of the product
-        productElm.append(productImage);
-        productElm.append(productDetails);
-
-        // Add complete individual product too the product section
-        productsSection.append(productElm);
-    });
+    populateProducts(products);
 
 
     document.querySelector(".products-filter label[for=all] span.product-amount").textContent = products.length;
     document.querySelector(".products-filter label[for=paid] span.product-amount").textContent = paidProducts.length; 
     document.querySelector(".products-filter label[for=free] span.product-amount").textContent = freeProducts.length; 
+
+    let productsFilter = document.querySelector(".products-filter");
+    productsFilter.addEventListener("click", function(event){
+        if(event.target.id === "all"){
+            populateProducts(products)
+        } else if (event.target.id === "paid") {
+            populateProducts(paidProducts)
+        } else if (event.target.id === "free") {
+            populateProducts(freeProducts)
+        }
+    })
 };
 
 
