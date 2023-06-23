@@ -148,7 +148,6 @@ function galleryHandler(){
 };
 
 // Products section
-
 function productsHandler(){
     let productsSection = document.querySelector(".products-area");
 
@@ -197,7 +196,11 @@ function productsHandler(){
         // Add complete individual product too the product section
         productsSection.append(productElm);
     })
+
+    let totalProducts = products.length;
+    document.querySelector(".products-filter label[for=all] span.product-amount").textContent = totalProducts; 
 };
+
 
 // Page load
 menuHandler();
