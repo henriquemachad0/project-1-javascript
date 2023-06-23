@@ -72,6 +72,6 @@ galleryImages.forEach((image, index) => {
     thumb.src = image.src;
     thumb.alt = image.alt;
     thumb.dataset.arrayIndex = index;
-    thumb.dataset.selected = false;
+    thumb.dataset.selected = index == 0 ? true : false;
     thumbnails.appendChild(thumb)
 });
