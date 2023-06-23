@@ -149,16 +149,6 @@ function galleryHandler(){
 
 // Products section
 
-/* <div class="product-item">
-<img src="./assets/products/img6.png" alt="AstroFiction">
-<div class="product-details">
-  <h3 class="product-title">AstroFiction</h3>
-  <p class="product-author">John Doe</p>
-  <p class="price-title">Price</p>
-  <p class="product-price">$ 49.90</p>
-</div>
-</div> */
-
 function productsHandler(){
     let productsSection = document.querySelector(".products-area");
 
