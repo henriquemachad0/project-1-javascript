@@ -227,6 +227,10 @@ function productsHandler(){
     })
 };
 
+function footerHandler(){
+    let currentYear = new Date().getFullYear();
+    document.querySelector("footer").textContent = `© ${currentYear} - All righrs reserved`
+}
 
 // Page load
 menuHandler();
@@ -234,3 +238,4 @@ greetingHandler();
 clockHandler();
 galleryHandler();
 productsHandler();
+footerHandler();
