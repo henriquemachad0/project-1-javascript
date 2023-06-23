@@ -11,7 +11,46 @@ const galleryImages = [
         "src": "./assets/gallery/image3.jpg",
         "alt": "Thumbnail Image 3"
     }
-]
+];
+
+const products = [
+    {
+      title: "AstroFiction",
+      author: "John Doe",
+      price: 49.9,
+      image: "./assets/products/img6.png"
+    },
+    {
+      title: "Space Odissey",
+      author: "Marie Anne",
+      price: 35,
+      image: "./assets/products/img1.png"
+    },
+    {
+      title: "Doomed City",
+      author: "Jason Cobert",
+      price: 0,
+      image: "./assets/products/img2.png"
+    },
+    {
+      title: "Black Dog",
+      author: "John Doe",
+      price: 85.35,
+      image: "./assets/products/img3.png"
+    },
+    {
+      title: "My Little Robot",
+      author: "Pedro Paulo",
+      price: 0,
+      image: "./assets/products/img5.png"
+    },
+    {
+      title: "Garden Girl",
+      author: "Ankit Patel",
+      price: 45,
+      image: "./assets/products/img4.png"
+    }
+  ];
 
 // Menu section
 function menuHandler(){
@@ -22,13 +61,13 @@ function menuHandler(){
     document.querySelector("#close-nav-menu").addEventListener("click", function(){
         document.querySelector("header nav .wrapper").classList.remove("nav-open");
     });
-}
+};
 
 // Temperature conversion
 function celsiusToFahr(temperature){
     let fahr = (temperature * 9/5) + 32
     return fahr
-}
+};
 
 // Greeting section
 function greetingHandler(){
@@ -63,7 +102,7 @@ function greetingHandler(){
     
         }
     })
-}
+};
 
 // Local time section
 function clockHandler() {
@@ -73,7 +112,7 @@ function clockHandler() {
         document.querySelector("span[data-time=minutes]").textContent = localTime.getMinutes().toString().padStart(2, "0");
         document.querySelector("span[data-time=seconds]").textContent = localTime.getSeconds().toString().padStart(2, "0");
     }, 1000)
-}
+};
 
 // Gallery section
 function galleryHandler(){
@@ -106,10 +145,27 @@ function galleryHandler(){
     
         thumbnails.appendChild(thumb)
     });
-}
+};
+
+// Products section
+
+/* <div class="product-item">
+<img src="./assets/products/img6.png" alt="AstroFiction">
+<div class="product-details">
+  <h3 class="product-title">AstroFiction</h3>
+  <p class="product-author">John Doe</p>
+  <p class="price-title">Price</p>
+  <p class="product-price">$ 49.90</p>
+</div>
+</div> */
+
+function productsHandler(){
+
+};
 
 // Page load
 menuHandler();
 greetingHandler();
 clockHandler();
 galleryHandler();
+productsHandler();
