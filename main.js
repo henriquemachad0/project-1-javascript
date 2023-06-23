@@ -160,7 +160,25 @@ function galleryHandler(){
 </div> */
 
 function productsHandler(){
+    let productsSection = document.querySelector(".products-area");
 
+    // Run a loop throught the products and crate an HTML element ("product-item") for each of them
+    products.forEach((product, index) => {
+        // Create the HTML element for the individual product
+        let productElm = document.createElement("div");
+        productElm.classList.add("product-item");
+        
+        // Create the product image
+        let productImage = document.createElement("img");
+        productImage.src = product.image;
+        productImage.alt = `Image for ${product.title}`;
+        
+        // Add all child HTML elements of the product
+        productElm.append(productImage);
+
+        // Add complete individual product too the product section
+        productsSection.append(productElm);
+    })
 };
 
 // Page load
