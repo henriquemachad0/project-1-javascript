@@ -202,9 +202,7 @@ function populateProducts(productList){
 
 function productsHandler(){
     let freeProducts = products.filter(item => !item.price || item.price <= 0);
-    let paidProducts = products.filter(function(item){
-        return item.price > 0;
-    });
+    let paidProducts = products.filter(item => item.price > 0);
 
     populateProducts(products);
 
@@ -229,6 +227,10 @@ function footerHandler(){
     let currentYear = new Date().getFullYear();
     document.querySelector("footer").textContent = `© ${currentYear} - All righrs reserved`
 }
+
+navigator.geolocation.getCurrentPosition(position => {
+    console.log(position)
+})
 
 // Page load
 menuHandler();
