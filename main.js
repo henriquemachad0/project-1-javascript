@@ -110,7 +110,8 @@ function weatherHandler() {
             let condition = data.weather[0].description;
             let location = data.name;
             const temperature = data.main.temp;
-    
+
+       
             let celsiusText = `The weather is ${condition} in ${location} and it's ${temperature.toFixed(1)}°C outside.`
             let fahrText = `The weather is ${condition} in ${location} and it's ${celsiusToFahr(temperature.toFixed(1))}°F outside.`
             
@@ -124,6 +125,8 @@ function weatherHandler() {
             
                 }
             })
+        }).catch(err => {
+            document.querySelector("p#weather").innerHTML = "Error getting the weather temperature. Please refresh the page to try again";
         })
     });
 }
