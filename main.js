@@ -201,9 +201,7 @@ function populateProducts(productList){
 }
 
 function productsHandler(){
-    let freeProducts = products.filter(function(item){
-        return !item.price || item.price <= 0;
-    });
+    let freeProducts = products.filter(item => !item.price || item.price <= 0);
     let paidProducts = products.filter(function(item){
         return item.price > 0;
     });
